@@ -7,8 +7,7 @@ import java.net.InetAddress;
 
 public class JavaUdpClient {
 
-    public static void main(String args[]) throws Exception
-    {
+    public static void main(String args[]) {
         System.out.println("JAVA UDP CLIENT");
         DatagramSocket socket = null;
         int portNumber = 9008;

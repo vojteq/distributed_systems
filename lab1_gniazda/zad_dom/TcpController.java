@@ -3,18 +3,16 @@ package zad_dom;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.List;
 
-public class TcpConnection implements Runnable {
+public class TcpController implements Runnable {
 
     private final Socket clientSocket;
 
 
     private boolean connected;
 
-    public TcpConnection(Socket clientSocket) {
+    public TcpController(Socket clientSocket) {
         this.clientSocket = clientSocket;
         connected = true;
     }
@@ -29,14 +27,8 @@ public class TcpConnection implements Runnable {
                 if (message.equals("disconnect") || message.equals("dc")) {
                     stop();
                 } else {
-                    message = "(sender port: " + clientSocket.getPort() + ") " + message;
-                    List<Socket> clients = ChatServer.getClonedClientSocketList();
-                    for (Socket socket : clients) {
-                        if (!socket.equals(clientSocket)) {
-                            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                            out.println(message);
-                        }
-                    }
+//                    message = "(sender port: " + clientSocket.getPort() + ") " + message;
+                    ChatServer.sendMessage(message, clientSocket);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
