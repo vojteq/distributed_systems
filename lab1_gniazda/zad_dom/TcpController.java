@@ -27,7 +27,6 @@ public class TcpController implements Runnable {
                 if (message.equals("disconnect") || message.equals("dc")) {
                     stop();
                 } else {
-//                    message = "(sender port: " + clientSocket.getPort() + ") " + message;
                     ChatServer.sendMessage(message, clientSocket);
                 }
             } catch (Exception e) {
