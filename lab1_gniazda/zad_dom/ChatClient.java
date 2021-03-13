@@ -17,16 +17,16 @@ public class ChatClient {
     private static Socket tcpSocket = null;
     private static DatagramSocket udpSocket = null;
     private static MulticastSocket multicastSocket = null;
-    private static int serverPort = 12345;
-    private static int multicastPort = 12350;
-    private static String host = "localhost";
-    private static String group = "230.0.0.0";
+    private static final int serverPort = 12345;
+    private static final int multicastPort = 12350;
+    private static final String host = "localhost";
+    private static final String group = "230.0.0.0";
 
     public static void main(String[] args) {
         reader = new BufferedReader(new InputStreamReader(System.in));
         Thread msgSender = new Thread(new ClientMsgSender());
         Thread udpReceiver = new Thread(new UdpReceiver());
-        Thread multicatsReceiver = new Thread(new MulticastReceiver());
+        Thread multicastReceiver = new Thread(new MulticastReceiver());
 
         System.out.println("enter your nick");
         try {
@@ -47,7 +47,7 @@ public class ChatClient {
             tcpIn = new BufferedReader(new InputStreamReader(tcpSocket.getInputStream()));
             msgSender.start();
             udpReceiver.start();
-            multicatsReceiver.start();
+            multicastReceiver.start();
 
             while (connected) {
                 System.out.println(tcpIn.readLine());

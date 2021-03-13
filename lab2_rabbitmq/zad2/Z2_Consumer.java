@@ -43,6 +43,7 @@ public class Z2_Consumer {
         String key = br.readLine();
         String queueName = channel.queueDeclare().getQueue();
         channel.queueBind(queueName, EXCHANGE_NAME, key);
+        channel.queueBind(queueName, EXCHANGE_NAME, "all");
         System.out.println("created queue: " + queueName);
 
         // consumer (message handling)
