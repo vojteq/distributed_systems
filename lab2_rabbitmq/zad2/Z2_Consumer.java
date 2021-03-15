@@ -23,28 +23,28 @@ public class Z2_Consumer {
 //        String EXCHANGE_NAME = "exchange1";
 //        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
 
-//        String EXCHANGE_NAME = "exchange_direct";
-//        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
+        String EXCHANGE_NAME = "exchange_direct";
+        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
 
-        String EXCHANGE_NAME = "exchange_topic";
-        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
+//        String EXCHANGE_NAME = "exchange_topic";
+//        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
 
         // queue & bind
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        System.out.println("enter key: ");
-//        String key = br.readLine();
-//        String queueName = channel.queueDeclare().getQueue();
-//        channel.queueBind(queueName, EXCHANGE_NAME, key);
-//        channel.queueBind(queueName, EXCHANGE_NAME, "both");
-//        System.out.println("created queue: " + queueName);
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("enter topic key: ");
+        System.out.println("enter key: ");
         String key = br.readLine();
         String queueName = channel.queueDeclare().getQueue();
         channel.queueBind(queueName, EXCHANGE_NAME, key);
-        channel.queueBind(queueName, EXCHANGE_NAME, "all");
+        channel.queueBind(queueName, EXCHANGE_NAME, "both");
         System.out.println("created queue: " + queueName);
+
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        System.out.println("enter topic key: ");
+//        String key = br.readLine();
+//        String queueName = channel.queueDeclare().getQueue();
+//        channel.queueBind(queueName, EXCHANGE_NAME, key);
+//        channel.queueBind(queueName, EXCHANGE_NAME, "all");
+//        System.out.println("created queue: " + queueName);
 
         // consumer (message handling)
         Consumer consumer = new DefaultConsumer(channel) {

@@ -23,12 +23,12 @@ public class Z2_Producer {
 
         // exchange
 //        String EXCHANGE_NAME = "exchange1";
-//        String EXCHANGE_NAME = "exchange_direct";
-        String EXCHANGE_NAME = "exchange_topic";
+        String EXCHANGE_NAME = "exchange_direct";
+//        String EXCHANGE_NAME = "exchange_topic";
 
 //        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
-//        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
-        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
+        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
+//        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
 
         while (true) {
 
