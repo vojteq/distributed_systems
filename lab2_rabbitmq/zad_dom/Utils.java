@@ -8,8 +8,6 @@ public class Utils {
     public static final String OXYGEN_QUEUE_NAME = "oxygen_queue";
     public static final String SHOES_QUEUE_NAME = "shoes_queue";
 
-    public static final String ADMIN_EXCHANGE_NAME = "admin_exchange";
-
 
     public static String getProductName(String productSign) {
         return switch (productSign) {

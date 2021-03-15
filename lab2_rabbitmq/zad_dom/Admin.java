@@ -29,7 +29,7 @@ public class Admin {
                 System.out.println("Enter your message");
                 String message = reader.readLine();
                 if (!message.isBlank()) {
-                    String messageToBeSent = adminId + ": " + message;
+                    String messageToBeSent = "(" + adminId + "): " + message;
                     String key;
                     switch (receiver) {
                         case "a" -> key = "all";
