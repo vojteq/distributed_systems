@@ -1,4 +1,4 @@
-package domowe;
+package z_domowe;
 
 public class Utils {
 

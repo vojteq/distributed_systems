@@ -1,4 +1,4 @@
-package domowe;
+package z_domowe;
 
 import com.rabbitmq.client.*;
 
