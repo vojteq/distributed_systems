@@ -41,7 +41,7 @@ public class Provider {
         String sign = reader.readLine();
 
         while (!sign.equals("d")) {
-            String product = Utils.getProductName(sign);
+            String product = Utils.getMessage(sign);
             if (!product.equals("") && !subscribed.contains(product)) {
                 subscribed.add(product);
                 listeners.add(new Thread(new ProductRequestListener(connection, providerId, product, Utils.getQueueName(product))));
@@ -67,7 +67,6 @@ public class Provider {
 
     private static class AdminMessageListener implements Runnable {
 
-        private final String userGroup = "providers";
         private Channel channel;
         private Consumer consumer;
 
@@ -84,17 +83,17 @@ public class Provider {
         private void init() throws IOException {
             channel = connection.createChannel();
             channel.queueDeclare(providerId, false, false, true, null);
-            channel.queueBind(providerId, Utils.PRODUCT_EXCHANGE_NAME, "all");
-            channel.queueBind(providerId, Utils.PRODUCT_EXCHANGE_NAME, "all_" + userGroup);
+            channel.queueBind(providerId, Utils.TOPIC_EXCHANGE_NAME, "all");
+            channel.queueBind(providerId, Utils.TOPIC_EXCHANGE_NAME, "all.providers");
 
             consumer = new DefaultConsumer(channel) {
                 @Override
-                public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) {
                     String message = new String(body, StandardCharsets.UTF_8);
                     if (envelope.getRoutingKey().equals("all")) {
                         System.out.println("Received message to all: " + message);
                     } else {
-                        System.out.println("Received message to all " + userGroup + ": " + message);
+                        System.out.println("Received message to all providers" + ": " + message);
                     }
                 }
             };

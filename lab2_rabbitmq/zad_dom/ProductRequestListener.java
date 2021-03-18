@@ -42,8 +42,8 @@ public class ProductRequestListener implements Runnable {
                             requestId + " " + responseId,
                             null, null, null, null, null);
                     channel.basicPublish(
-                            Utils.PRODUCT_EXCHANGE_NAME,
-                            teamId,
+                            Utils.TOPIC_EXCHANGE_NAME,
+                            "teams." + teamId,
                             props,
                             responseMessage.getBytes());
                     System.out.println("Sent: " + responseMessage);
@@ -59,9 +59,9 @@ public class ProductRequestListener implements Runnable {
 
     private Channel createChannel() throws IOException {
         Channel channel = connection.createChannel();
-        channel.exchangeDeclare(Utils.PRODUCT_EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
+        channel.exchangeDeclare(Utils.TOPIC_EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
         channel.queueDeclare(queueName, false, false, true, null);
-        channel.queueBind(queueName, Utils.PRODUCT_EXCHANGE_NAME, productType);
+        channel.queueBind(queueName, Utils.TOPIC_EXCHANGE_NAME, "providers." + productType);
         return channel;
     }
 }

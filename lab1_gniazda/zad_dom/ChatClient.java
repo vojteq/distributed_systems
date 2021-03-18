@@ -91,7 +91,7 @@ public class ChatClient {
                                 System.out.println("enter multicast msg");
                                 msg = reader.readLine();
                                 buffer = ("[M] " + nick + ": " + msg).getBytes();
-                                datagramPacket = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(group), multicastPort);     // TODO co z tym portem
+                                datagramPacket = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(group), multicastPort);
                                 udpSocket.send(datagramPacket);
                                 continue;
                             default:

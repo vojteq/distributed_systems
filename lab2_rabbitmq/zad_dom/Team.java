@@ -21,29 +21,38 @@ public class Team {
         connection = factory.newConnection();
         Channel requestChannel = connection.createChannel();
 
-        requestChannel.exchangeDeclare(Utils.PRODUCT_EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
+        requestChannel.exchangeDeclare(Utils.TOPIC_EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         new Thread(new MessageReader()).start();
 
         int counter = 0;
-        while (true) {
+        boolean connected = true;
+        while (connected) {
             System.out.println("what product do u need ('o' - oxygen, 'b' - backpack, 's' - shoes)");
-            String product = Utils.getProductName(reader.readLine());
-            if (!product.equals("")) {
-                AMQP.BasicProperties props = new AMQP.BasicProperties(
-                        null, null, null, null, null,
-                        null, null, null,
-                        teamId + ":" + counter,
-                        null, null, null, null, null);
-                requestChannel.basicPublish(
-                        Utils.PRODUCT_EXCHANGE_NAME,
-                        product,
-                        props,
-                        ((teamId) + " need " + product).getBytes(StandardCharsets.UTF_8)
-                );
-                counter++;
+            String message = Utils.getMessage(reader.readLine());
+            if (!message.isBlank()) {
+                if (message.equals("end")) {
+                    System.out.println("CLOSING");
+                    messageChannel.queueDelete(teamId);
+                    connected = false;
+                    connection.close();
+                }
+                else {
+                    AMQP.BasicProperties props = new AMQP.BasicProperties(
+                            null, null, null, null, null,
+                            null, null, null,
+                            teamId + ":" + counter,
+                            null, null, null, null, null);
+                    requestChannel.basicPublish(
+                            Utils.TOPIC_EXCHANGE_NAME,
+                            "providers." + message,
+                            props,
+                            ((teamId) + " need " + message).getBytes(StandardCharsets.UTF_8)
+                    );
+                    counter++;
+                }
             }
         }
     }
@@ -65,20 +74,20 @@ public class Team {
         void init() throws Exception {
             messageChannel = connection.createChannel();
             messageChannel.queueDeclare(teamId, false, true, true, null);
-            messageChannel.queueBind(teamId, Utils.PRODUCT_EXCHANGE_NAME, "all");
-            messageChannel.queueBind(teamId, Utils.PRODUCT_EXCHANGE_NAME, "all_teams");
-            messageChannel.queueBind(teamId, Utils.PRODUCT_EXCHANGE_NAME, teamId);
+            messageChannel.queueBind(teamId, Utils.TOPIC_EXCHANGE_NAME, "all");
+            messageChannel.queueBind(teamId, Utils.TOPIC_EXCHANGE_NAME, "all.teams");
+            messageChannel.queueBind(teamId, Utils.TOPIC_EXCHANGE_NAME, "teams." + teamId);
 
             consumer = new DefaultConsumer(messageChannel) {
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) {
                     String message = new String(body, StandardCharsets.UTF_8);
-                    if (envelope.getRoutingKey().equals(teamId)) {
+                    if (envelope.getRoutingKey().equals("teams." + teamId)) {
                         System.out.println("Received response from provider: " + message);
                         System.out.println("OrderId: " + properties.getMessageId());
                     } else if (envelope.getRoutingKey().equals("all")) {
                         System.out.println("Received message to all: " + message);
-                    } else if (envelope.getRoutingKey().equals("all_teams")) {
+                    } else if (envelope.getRoutingKey().equals("all.teams")) {
                         System.out.println("Received message to all teams: " + message);
                     }
                 }
