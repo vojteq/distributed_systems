@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ac39faa7-f3d9-4661-a9e1-7ef5aeadb1eb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../lab1_gniazda/lab1_gniazda.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab1_gniazda/out/production/lab1_gniazda/lab1_gniazda.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2_rabbitmq/lab2_rabbitmq.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2_rabbitmq/out/production/lab2_rabbitmq/lab2_rabbitmq.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3_zookiper/zadanie_zookeeper/zadanie_zookeeper.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab4_akka.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Z1/MathActorDivide.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1r9ckoIF1K9GEPQ3rNdOdbGLfVv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\T\Documents\STUDIA\6semestr\rozproszone\lab4_akka\src\main" />
+      <recent name="C:\Users\T\Documents\STUDIA\6semestr\rozproszone\lab4_akka" />
+      <recent name="C:\Users\T\Documents\STUDIA\6semestr\rozproszone\lab4_akka\src\main\java" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Z2_Main">
+    <configuration name="Z1_Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Z1.Z1_Main" />
+      <module name="lab4_akka" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Z1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Z2_Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Z2.Z2_Main" />
+      <module name="lab4_akka" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Z2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Z2_NodeA" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Z2.Z2_NodeA" />
+      <module name="lab4_akka" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Z2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Z2_NodeB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Z2.Z2_NodeB" />
+      <module name="lab4_akka" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Z2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Z2_Main" />
+        <item itemvalue="Application.Z2_NodeA" />
+        <item itemvalue="Application.Z2_NodeB" />
+        <item itemvalue="Application.Z1_Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ac39faa7-f3d9-4661-a9e1-7ef5aeadb1eb" name="Default Changelist" comment="" />
+      <created>1618391891943</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618391891943</updated>
+      <workItem from="1618391893109" duration="15580000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
