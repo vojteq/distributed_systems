@@ -52,7 +52,6 @@ public class DatabaseActor extends AbstractBehavior<Command> {
     }
 
     private Behavior<Command> onSaveRequest(IncrementRequest incrementRequest) {
-        //todo
         try {
             String select = "SELECT issues FROM satellites WHERE id = ?";
             PreparedStatement selectStatement = connection.prepareStatement(select);
@@ -72,7 +71,6 @@ public class DatabaseActor extends AbstractBehavior<Command> {
     }
 
     private Behavior<Command> onGetDataRequest(GetDataRequest getDataRequest) {
-        //todo
         int issues = -1;
         try {
             String select = "SELECT issues FROM satellites WHERE id = ?";
