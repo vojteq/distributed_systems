@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        File configFile = new File("/src/main/dispatcher.conf");
+        File configFile = new File("\\src\\main\\dispatcher.conf");
         Config config = ConfigFactory.parseFile(configFile);
 
         ActorSystem.create(Main.create(), "dispatcherSystem", config);
