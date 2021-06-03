@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "sensors";
+option java_outer_classname = "SensorsProto";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
+
+package Sensors;
+
+enum SensorType {
+  WATER = 0;
+  TEMPERATURE = 1;
+  ELECTRICITY = 2;
+}
+
+message Measurement {
+  string owner = 1;
+  SensorType type = 2;
+  int32 value = 3;
+  google.protobuf.Any additionalData = 4;
+}
+
+message TemperatureAdditionalData {
+  string unit = 1;
+}
+
+message MeasurementsPackage {
+  repeated Measurement measurement = 1;
+}
+
+service SensorService {
+  rpc SensorMeasurement (stream MeasurementsPackage) returns (google.protobuf.Empty) {}
+}
+
+//    protoc.exe -I. --java_out=gen --plugin=protoc-gen-grpc-java=protoc-gen-grpc-java-1.37.0-windows-x86_64.exe --grpc-java_out=gen sensor.proto
